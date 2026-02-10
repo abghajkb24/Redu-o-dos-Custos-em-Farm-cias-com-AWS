@@ -1,0 +1,8 @@
+public class Produto {
+    private String id;
+    private String nome;
+    private Double preco;
+    private Integer estoque;
+
+    // Getters e Setters
+}
