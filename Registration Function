@@ -1,0 +1,12 @@
+import java.util.function.Function;
+import org.springframework.stereotype.Component;
+
+@Component
+public class CadastrarProduto implements Function<Produto, String> {
+
+    @Override
+    public String apply(Produto produto) {
+        // Lógica para salvar no DynamoDB usando o DynamoDbClient
+        return "Produto " + produto.getNome() + " salvo com sucesso na nuvem!";
+    }
+}
