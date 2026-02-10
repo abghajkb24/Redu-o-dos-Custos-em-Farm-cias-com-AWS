@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Infraestrutura Serverless para Redução de Custos em Farmácias
+
+Resources:
+  # Tabela no DynamoDB (Custo Zero se não houver acesso)
+  TabelaEstoque:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+        Name: id
+        Type: String
+      TableName: PharmaEstoque
+
+  # Função Lambda (Backend Java)
+  PharmaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequest
+      Runtime: java17
+      CodeUri: .
+      MemorySize: 512
+      Timeout: 30
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TabelaEstoque
+      Events:
+        CadastroProduto:
+          Type: Api
+          Properties:
+            Path: /produtos
+            Method: post
+
+Outputs:
+  PharmaApiUrl:
+    Description: "URL da API para o Frontend"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/produtos"
