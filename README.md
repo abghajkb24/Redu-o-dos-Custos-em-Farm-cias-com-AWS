@@ -1,6 +1,6 @@
-O PharmaCloud é um sistema de gerenciamento farmacêutico desenvolvido em Java 17 e Spring Cloud Function. O objetivo central é gerenciar o inventário e pedidos de uma farmácia fictícia utilizando a infraestrutura serverless da AWS para garantir que a empresa pague apenas pelo que processar, eliminando custos de servidores ociosos durante a madrugada.
+O # PharmaCloud # é um sistema de gerenciamento farmacêutico desenvolvido em Java 17 e Spring Cloud Function. O objetivo central é gerenciar o inventário e pedidos de uma farmácia fictícia utilizando a infraestrutura serverless da AWS para garantir que a empresa pague apenas pelo que processar, eliminando custos de servidores ociosos durante a madrugada.
 
-2. Arquitetura Técnica
+## 2. Arquitetura Técnica ## 
 
 Linguagem: Java 17 (LTS).
 Framework: Spring Cloud Function (permite rodar código Spring no AWS Lambda).
